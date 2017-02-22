@@ -1,0 +1,1853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OooPs14_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adress_contragent">
+          <Key>
+            <PropertyRef Name="id_contragent" />
+            <PropertyRef Name="id_conec_adress" />
+          </Key>
+          <Property Name="id_adr_contr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_contragent" Type="int" Nullable="false" />
+          <Property Name="id_conec_adress" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Arhiv_sotr">
+          <Key>
+            <PropertyRef Name="id_arh" />
+          </Key>
+          <Property Name="id_arh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sotr" Type="int" Nullable="false" />
+          <Property Name="data_uvolneniya" Type="date" Nullable="false" />
+          <Property Name="name_sotr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastname_sotr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="adress_sotr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email_sotr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone_sotr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_otd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="data_priema" Type="date" Nullable="false" />
+          <Property Name="id_dolzhn" Type="int" Nullable="false" />
+          <Property Name="id_prichin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banki">
+          <Key>
+            <PropertyRef Name="id_strana" />
+            <PropertyRef Name="kod_banka" />
+          </Key>
+          <Property Name="id_bank" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_banka" Type="int" Nullable="false" />
+          <Property Name="id_strana" Type="int" Nullable="false" />
+          <Property Name="kod_banka" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Buchalterya">
+          <Key>
+            <PropertyRef Name="id_buh" />
+          </Key>
+          <Property Name="id_buh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="summa" Type="money" />
+          <Property Name="id_valyti" Type="int" />
+          <Property Name="id_contragent" Type="int" />
+          <Property Name="prih_rash" Type="int" Nullable="false" />
+          <Property Name="id_tip_doc" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chet_inBank">
+          <Key>
+            <PropertyRef Name="id_chet_inbak" />
+          </Key>
+          <Property Name="id_chet_inbak" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomer_cheta" Type="int" Nullable="false" />
+          <Property Name="id_bank" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Con_Adress_Dom">
+          <Key>
+            <PropertyRef Name="id_con_adr_dom" />
+          </Key>
+          <Property Name="id_con_adr_dom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_ulica" Type="int" Nullable="false" />
+          <Property Name="nomer_name_doma" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Con_adress_Point">
+          <Key>
+            <PropertyRef Name="id_con_adr_point" />
+          </Key>
+          <Property Name="id_con_adr_point" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_con_adr_dom" Type="int" Nullable="false" />
+          <Property Name="con_name_adsr_point" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="id_contact" />
+          </Key>
+          <Property Name="id_contact" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="osn_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="dop_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Contragenti">
+          <Key>
+            <PropertyRef Name="id_contr" />
+          </Key>
+          <Property Name="id_contr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_contr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_adr_contr" Type="int" Nullable="false" />
+          <Property Name="id_chet_inbank" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contragenti_contact">
+          <Key>
+            <PropertyRef Name="id_contrag" />
+            <PropertyRef Name="id_contact" />
+          </Key>
+          <Property Name="id_contr_cont" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_contrag" Type="int" Nullable="false" />
+          <Property Name="id_contact" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="id_doc" />
+          </Key>
+          <Property Name="id_doc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_tip_doc" Type="int" Nullable="false" />
+          <Property Name="name_doc" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_otd" Type="int" Nullable="false" />
+          <Property Name="id_vid_doc" Type="int" Nullable="false" />
+          <Property Name="id_sotrud_from" Type="int" Nullable="false" />
+          <Property Name="id_sotrud_to" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dolzhnosti">
+          <Key>
+            <PropertyRef Name="id_dolzhn" />
+          </Key>
+          <Property Name="id_dolzhn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_dolzhn" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Dvijenie_Documenta">
+          <Key>
+            <PropertyRef Name="id_dv_doc" />
+          </Key>
+          <Property Name="id_dv_doc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_doc" Type="int" Nullable="false" />
+          <Property Name="data_sob" Type="date" Nullable="false" />
+          <Property Name="id_type_dvij" Type="int" Nullable="false" />
+          <Property Name="id_contag" Type="int" Nullable="false" />
+          <Property Name="id_otd" Type="int" Nullable="false" />
+          <Property Name="id_sotr" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History_replace_sotr">
+          <Key>
+            <PropertyRef Name="id_hrs" />
+          </Key>
+          <Property Name="id_hrs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sotr" Type="int" Nullable="false" />
+          <Property Name="from_id_otd" Type="int" />
+          <Property Name="to_id_otd" Type="int" />
+          <Property Name="date_replace" Type="date" />
+          <Property Name="from_id_dolzh" Type="int" />
+          <Property Name="to_id_dolzh" Type="int" />
+        </EntityType>
+        <EntityType Name="Mestnost">
+          <Key>
+            <PropertyRef Name="id_mesto" />
+          </Key>
+          <Property Name="id_mesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_region" Type="int" />
+          <Property Name="name_mesto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="post_index_mesto" Type="int" />
+        </EntityType>
+        <EntityType Name="Otdely">
+          <Key>
+            <PropertyRef Name="id_otd" />
+          </Key>
+          <Property Name="id_otd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_otd" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_otd_parent" Type="int" />
+          <Property Name="date_birth" Type="date" />
+          <Property Name="date_death" Type="date" />
+          <Property Name="id_nach" Type="int" />
+        </EntityType>
+        <EntityType Name="Prichina">
+          <Key>
+            <PropertyRef Name="id_prich" />
+          </Key>
+          <Property Name="id_prich" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_prich" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="id_reg" />
+          </Key>
+          <Property Name="id_reg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_stran" Type="int" Nullable="false" />
+          <Property Name="name_reg" Type="nvarchar" MaxLength="50" />
+          <Property Name="post_index_region" Type="int" />
+        </EntityType>
+        <EntityType Name="Sotrudniki">
+          <Key>
+            <PropertyRef Name="id_sotr" />
+          </Key>
+          <Property Name="id_sotr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_sotr" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastname_sotr" Type="nvarchar" MaxLength="50" />
+          <Property Name="adress_sotr" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="email_sotr" Type="nvarchar" MaxLength="150" />
+          <Property Name="phone_sotr" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_otd" Type="int" Nullable="false" />
+          <Property Name="data_priema" Type="date" />
+          <Property Name="id_dolzhn" Type="int" />
+        </EntityType>
+        <EntityType Name="Strana">
+          <Key>
+            <PropertyRef Name="id_strana" />
+          </Key>
+          <Property Name="id_strana" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_stran" Type="nvarchar" MaxLength="50" />
+          <Property Name="kod_stran" Type="int" />
+          <Property Name="post_index_stran" Type="int" />
+        </EntityType>
+        <EntityType Name="Tip_Documenta">
+          <Key>
+            <PropertyRef Name="id_tip_doc" />
+          </Key>
+          <Property Name="id_tip_doc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_doc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_vid_doc" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ulica">
+          <Key>
+            <PropertyRef Name="id_ulica" />
+          </Key>
+          <Property Name="id_ulica" Type="int" Nullable="false" />
+          <Property Name="name_ulica" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_mesto" Type="int" Nullable="false" />
+          <Property Name="post_index_ulica" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Valyta">
+          <Key>
+            <PropertyRef Name="id_val" />
+          </Key>
+          <Property Name="id_val" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_val" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Vid_Documenta">
+          <Key>
+            <PropertyRef Name="id_vid_doc" />
+          </Key>
+          <Property Name="id_vid_doc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_vid_doc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tip_podrazd" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Adress_contragent_Con_adress_Point">
+          <End Role="Con_adress_Point" Type="Self.Con_adress_Point" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Adress_contragent" Type="Self.Adress_contragent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Con_adress_Point">
+              <PropertyRef Name="id_con_adr_point" />
+            </Principal>
+            <Dependent Role="Adress_contragent">
+              <PropertyRef Name="id_conec_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arhiv_sotr_Prichina">
+          <End Role="Prichina" Type="Self.Prichina" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Arhiv_sotr" Type="Self.Arhiv_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prichina">
+              <PropertyRef Name="id_prich" />
+            </Principal>
+            <Dependent Role="Arhiv_sotr">
+              <PropertyRef Name="id_prichin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Banki_Strana">
+          <End Role="Strana" Type="Self.Strana" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Banki" Type="Self.Banki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strana">
+              <PropertyRef Name="id_strana" />
+            </Principal>
+            <Dependent Role="Banki">
+              <PropertyRef Name="id_strana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Buchalterya_Contragenti">
+          <End Role="Contragenti" Type="Self.Contragenti" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buchalterya" Type="Self.Buchalterya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contragenti">
+              <PropertyRef Name="id_contr" />
+            </Principal>
+            <Dependent Role="Buchalterya">
+              <PropertyRef Name="id_contragent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Buchalterya_Tip_Documenta">
+          <End Role="Tip_Documenta" Type="Self.Tip_Documenta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buchalterya" Type="Self.Buchalterya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Documenta">
+              <PropertyRef Name="id_tip_doc" />
+            </Principal>
+            <Dependent Role="Buchalterya">
+              <PropertyRef Name="id_tip_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Buchalterya_Valyta">
+          <End Role="Valyta" Type="Self.Valyta" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buchalterya" Type="Self.Buchalterya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Valyta">
+              <PropertyRef Name="id_val" />
+            </Principal>
+            <Dependent Role="Buchalterya">
+              <PropertyRef Name="id_valyti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Con_Adress_Dom_Ulica">
+          <End Role="Ulica" Type="Self.Ulica" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Con_Adress_Dom" Type="Self.Con_Adress_Dom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ulica">
+              <PropertyRef Name="id_ulica" />
+            </Principal>
+            <Dependent Role="Con_Adress_Dom">
+              <PropertyRef Name="id_ulica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Con_adress_Point_Con_Adress_Dom">
+          <End Role="Con_Adress_Dom" Type="Self.Con_Adress_Dom" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Con_adress_Point" Type="Self.Con_adress_Point" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Con_Adress_Dom">
+              <PropertyRef Name="id_con_adr_dom" />
+            </Principal>
+            <Dependent Role="Con_adress_Point">
+              <PropertyRef Name="id_con_adr_dom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_Contragenti_Adress_contragent' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_Contragenti_Adress_contragent" />-->
+        <Association Name="FK_Contragenti_Chet_inBank">
+          <End Role="Chet_inBank" Type="Self.Chet_inBank" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contragenti" Type="Self.Contragenti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chet_inBank">
+              <PropertyRef Name="id_chet_inbak" />
+            </Principal>
+            <Dependent Role="Contragenti">
+              <PropertyRef Name="id_chet_inbank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contragenti_contact_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contragenti_contact" Type="Self.Contragenti_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="id_contact" />
+            </Principal>
+            <Dependent Role="Contragenti_contact">
+              <PropertyRef Name="id_contact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contragenti_contact_Contragenti">
+          <End Role="Contragenti" Type="Self.Contragenti" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contragenti_contact" Type="Self.Contragenti_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contragenti">
+              <PropertyRef Name="id_contr" />
+            </Principal>
+            <Dependent Role="Contragenti_contact">
+              <PropertyRef Name="id_contrag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_Otdely">
+          <End Role="Otdely" Type="Self.Otdely" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdely">
+              <PropertyRef Name="id_otd" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="id_otd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="id_sotr" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="id_sotrud_from" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_Sotrudniki1">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="id_sotr" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="id_sotrud_to" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_Tip_Documenta">
+          <End Role="Tip_Documenta" Type="Self.Tip_Documenta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Documenta">
+              <PropertyRef Name="id_tip_doc" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="id_tip_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dvijenie_Documenta_Documents">
+          <End Role="Documents" Type="Self.Documents" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dvijenie_Documenta" Type="Self.Dvijenie_Documenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="id_doc" />
+            </Principal>
+            <Dependent Role="Dvijenie_Documenta">
+              <PropertyRef Name="id_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_replace_sotr_Dolzhnosti2">
+          <End Role="Dolzhnosti" Type="Self.Dolzhnosti" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="History_replace_sotr" Type="Self.History_replace_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolzhnosti">
+              <PropertyRef Name="id_dolzhn" />
+            </Principal>
+            <Dependent Role="History_replace_sotr">
+              <PropertyRef Name="from_id_dolzh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_replace_sotr_Dolzhnosti3">
+          <End Role="Dolzhnosti" Type="Self.Dolzhnosti" Multiplicity="0..1" />
+          <End Role="History_replace_sotr" Type="Self.History_replace_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolzhnosti">
+              <PropertyRef Name="id_dolzhn" />
+            </Principal>
+            <Dependent Role="History_replace_sotr">
+              <PropertyRef Name="to_id_dolzh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_replace_sotr_Otdely">
+          <End Role="Otdely" Type="Self.Otdely" Multiplicity="0..1" />
+          <End Role="History_replace_sotr" Type="Self.History_replace_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdely">
+              <PropertyRef Name="id_otd" />
+            </Principal>
+            <Dependent Role="History_replace_sotr">
+              <PropertyRef Name="from_id_otd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_replace_sotr_Otdely1">
+          <End Role="Otdely" Type="Self.Otdely" Multiplicity="0..1" />
+          <End Role="History_replace_sotr" Type="Self.History_replace_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdely">
+              <PropertyRef Name="id_otd" />
+            </Principal>
+            <Dependent Role="History_replace_sotr">
+              <PropertyRef Name="to_id_otd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_replace_sotr_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="History_replace_sotr" Type="Self.History_replace_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="id_sotr" />
+            </Principal>
+            <Dependent Role="History_replace_sotr">
+              <PropertyRef Name="id_sotr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mestnost_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Mestnost" Type="Self.Mestnost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="id_reg" />
+            </Principal>
+            <Dependent Role="Mestnost">
+              <PropertyRef Name="id_region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Otdely_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Otdely" Type="Self.Otdely" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="id_sotr" />
+            </Principal>
+            <Dependent Role="Otdely">
+              <PropertyRef Name="id_nach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Region_Strana">
+          <End Role="Strana" Type="Self.Strana" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Region" Type="Self.Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strana">
+              <PropertyRef Name="id_strana" />
+            </Principal>
+            <Dependent Role="Region">
+              <PropertyRef Name="id_stran" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Dolzhnosti">
+          <End Role="Dolzhnosti" Type="Self.Dolzhnosti" Multiplicity="0..1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolzhnosti">
+              <PropertyRef Name="id_dolzhn" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="id_dolzhn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Otdely">
+          <End Role="Otdely" Type="Self.Otdely" Multiplicity="1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdely">
+              <PropertyRef Name="id_otd" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="id_otd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tip_Documenta_Vid_Documenta">
+          <End Role="Vid_Documenta" Type="Self.Vid_Documenta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tip_Documenta" Type="Self.Tip_Documenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vid_Documenta">
+              <PropertyRef Name="id_vid_doc" />
+            </Principal>
+            <Dependent Role="Tip_Documenta">
+              <PropertyRef Name="id_vid_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ylizi_Mestnost">
+          <End Role="Mestnost" Type="Self.Mestnost" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ulica" Type="Self.Ulica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mestnost">
+              <PropertyRef Name="id_mesto" />
+            </Principal>
+            <Dependent Role="Ulica">
+              <PropertyRef Name="id_mesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OooPs14_dbModelStoreContainer">
+          <EntitySet Name="Adress_contragent" EntityType="Self.Adress_contragent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Arhiv_sotr" EntityType="Self.Arhiv_sotr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banki" EntityType="Self.Banki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buchalterya" EntityType="Self.Buchalterya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chet_inBank" EntityType="Self.Chet_inBank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Con_Adress_Dom" EntityType="Self.Con_Adress_Dom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Con_adress_Point" EntityType="Self.Con_adress_Point" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contragenti" EntityType="Self.Contragenti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contragenti_contact" EntityType="Self.Contragenti_contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dolzhnosti" EntityType="Self.Dolzhnosti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dvijenie_Documenta" EntityType="Self.Dvijenie_Documenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History_replace_sotr" EntityType="Self.History_replace_sotr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mestnost" EntityType="Self.Mestnost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Otdely" EntityType="Self.Otdely" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prichina" EntityType="Self.Prichina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Strana" EntityType="Self.Strana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip_Documenta" EntityType="Self.Tip_Documenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ulica" EntityType="Self.Ulica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Valyta" EntityType="Self.Valyta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vid_Documenta" EntityType="Self.Vid_Documenta" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Adress_contragent_Con_adress_Point" Association="Self.FK_Adress_contragent_Con_adress_Point">
+            <End Role="Con_adress_Point" EntitySet="Con_adress_Point" />
+            <End Role="Adress_contragent" EntitySet="Adress_contragent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arhiv_sotr_Prichina" Association="Self.FK_Arhiv_sotr_Prichina">
+            <End Role="Prichina" EntitySet="Prichina" />
+            <End Role="Arhiv_sotr" EntitySet="Arhiv_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Banki_Strana" Association="Self.FK_Banki_Strana">
+            <End Role="Strana" EntitySet="Strana" />
+            <End Role="Banki" EntitySet="Banki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Buchalterya_Contragenti" Association="Self.FK_Buchalterya_Contragenti">
+            <End Role="Contragenti" EntitySet="Contragenti" />
+            <End Role="Buchalterya" EntitySet="Buchalterya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Buchalterya_Tip_Documenta" Association="Self.FK_Buchalterya_Tip_Documenta">
+            <End Role="Tip_Documenta" EntitySet="Tip_Documenta" />
+            <End Role="Buchalterya" EntitySet="Buchalterya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Buchalterya_Valyta" Association="Self.FK_Buchalterya_Valyta">
+            <End Role="Valyta" EntitySet="Valyta" />
+            <End Role="Buchalterya" EntitySet="Buchalterya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Con_Adress_Dom_Ulica" Association="Self.FK_Con_Adress_Dom_Ulica">
+            <End Role="Ulica" EntitySet="Ulica" />
+            <End Role="Con_Adress_Dom" EntitySet="Con_Adress_Dom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Con_adress_Point_Con_Adress_Dom" Association="Self.FK_Con_adress_Point_Con_Adress_Dom">
+            <End Role="Con_Adress_Dom" EntitySet="Con_Adress_Dom" />
+            <End Role="Con_adress_Point" EntitySet="Con_adress_Point" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contragenti_Chet_inBank" Association="Self.FK_Contragenti_Chet_inBank">
+            <End Role="Chet_inBank" EntitySet="Chet_inBank" />
+            <End Role="Contragenti" EntitySet="Contragenti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contragenti_contact_Contact" Association="Self.FK_Contragenti_contact_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Contragenti_contact" EntitySet="Contragenti_contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contragenti_contact_Contragenti" Association="Self.FK_Contragenti_contact_Contragenti">
+            <End Role="Contragenti" EntitySet="Contragenti" />
+            <End Role="Contragenti_contact" EntitySet="Contragenti_contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_Otdely" Association="Self.FK_Documents_Otdely">
+            <End Role="Otdely" EntitySet="Otdely" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_Sotrudniki" Association="Self.FK_Documents_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_Sotrudniki1" Association="Self.FK_Documents_Sotrudniki1">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_Tip_Documenta" Association="Self.FK_Documents_Tip_Documenta">
+            <End Role="Tip_Documenta" EntitySet="Tip_Documenta" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dvijenie_Documenta_Documents" Association="Self.FK_Dvijenie_Documenta_Documents">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Dvijenie_Documenta" EntitySet="Dvijenie_Documenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_replace_sotr_Dolzhnosti2" Association="Self.FK_History_replace_sotr_Dolzhnosti2">
+            <End Role="Dolzhnosti" EntitySet="Dolzhnosti" />
+            <End Role="History_replace_sotr" EntitySet="History_replace_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_replace_sotr_Dolzhnosti3" Association="Self.FK_History_replace_sotr_Dolzhnosti3">
+            <End Role="Dolzhnosti" EntitySet="Dolzhnosti" />
+            <End Role="History_replace_sotr" EntitySet="History_replace_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_replace_sotr_Otdely" Association="Self.FK_History_replace_sotr_Otdely">
+            <End Role="Otdely" EntitySet="Otdely" />
+            <End Role="History_replace_sotr" EntitySet="History_replace_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_replace_sotr_Otdely1" Association="Self.FK_History_replace_sotr_Otdely1">
+            <End Role="Otdely" EntitySet="Otdely" />
+            <End Role="History_replace_sotr" EntitySet="History_replace_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_replace_sotr_Sotrudniki" Association="Self.FK_History_replace_sotr_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+            <End Role="History_replace_sotr" EntitySet="History_replace_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mestnost_Region" Association="Self.FK_Mestnost_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Mestnost" EntitySet="Mestnost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Otdely_Sotrudniki" Association="Self.FK_Otdely_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+            <End Role="Otdely" EntitySet="Otdely" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Region_Strana" Association="Self.FK_Region_Strana">
+            <End Role="Strana" EntitySet="Strana" />
+            <End Role="Region" EntitySet="Region" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Dolzhnosti" Association="Self.FK_Sotrudniki_Dolzhnosti">
+            <End Role="Dolzhnosti" EntitySet="Dolzhnosti" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Otdely" Association="Self.FK_Sotrudniki_Otdely">
+            <End Role="Otdely" EntitySet="Otdely" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tip_Documenta_Vid_Documenta" Association="Self.FK_Tip_Documenta_Vid_Documenta">
+            <End Role="Vid_Documenta" EntitySet="Vid_Documenta" />
+            <End Role="Tip_Documenta" EntitySet="Tip_Documenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ylizi_Mestnost" Association="Self.FK_Ylizi_Mestnost">
+            <End Role="Mestnost" EntitySet="Mestnost" />
+            <End Role="Ulica" EntitySet="Ulica" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OooPs14_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adress_contragent">
+          <Key>
+            <PropertyRef Name="id_contragent" />
+            <PropertyRef Name="id_conec_adress" />
+          </Key>
+          <Property Name="id_adr_contr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_contragent" Type="Int32" Nullable="false" />
+          <Property Name="id_conec_adress" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Con_adress_Point" Relationship="Self.FK_Adress_contragent_Con_adress_Point" FromRole="Adress_contragent" ToRole="Con_adress_Point" />
+        </EntityType>
+        <EntityType Name="Arhiv_sotr">
+          <Key>
+            <PropertyRef Name="id_arh" />
+          </Key>
+          <Property Name="id_arh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sotr" Type="Int32" Nullable="false" />
+          <Property Name="data_uvolneniya" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="name_sotr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastname_sotr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="adress_sotr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email_sotr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone_sotr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_otd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="data_priema" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_dolzhn" Type="Int32" Nullable="false" />
+          <Property Name="id_prichin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Prichina" Relationship="Self.FK_Arhiv_sotr_Prichina" FromRole="Arhiv_sotr" ToRole="Prichina" />
+        </EntityType>
+        <EntityType Name="Banki">
+          <Key>
+            <PropertyRef Name="id_strana" />
+            <PropertyRef Name="kod_banka" />
+          </Key>
+          <Property Name="id_bank" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_banka" Type="Int32" Nullable="false" />
+          <Property Name="id_strana" Type="Int32" Nullable="false" />
+          <Property Name="kod_banka" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Strana" Relationship="Self.FK_Banki_Strana" FromRole="Banki" ToRole="Strana" />
+        </EntityType>
+        <EntityType Name="Buchalterya">
+          <Key>
+            <PropertyRef Name="id_buh" />
+          </Key>
+          <Property Name="id_buh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="summa" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="id_valyti" Type="Int32" />
+          <Property Name="id_contragent" Type="Int32" />
+          <Property Name="prih_rash" Type="Int32" Nullable="false" />
+          <Property Name="id_tip_doc" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contragenti" Relationship="Self.FK_Buchalterya_Contragenti" FromRole="Buchalterya" ToRole="Contragenti" />
+          <NavigationProperty Name="Tip_Documenta" Relationship="Self.FK_Buchalterya_Tip_Documenta" FromRole="Buchalterya" ToRole="Tip_Documenta" />
+          <NavigationProperty Name="Valyta" Relationship="Self.FK_Buchalterya_Valyta" FromRole="Buchalterya" ToRole="Valyta" />
+        </EntityType>
+        <EntityType Name="Chet_inBank">
+          <Key>
+            <PropertyRef Name="id_chet_inbak" />
+          </Key>
+          <Property Name="id_chet_inbak" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomer_cheta" Type="Int32" Nullable="false" />
+          <Property Name="id_bank" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contragentis" Relationship="Self.FK_Contragenti_Chet_inBank" FromRole="Chet_inBank" ToRole="Contragenti" />
+        </EntityType>
+        <EntityType Name="Con_Adress_Dom">
+          <Key>
+            <PropertyRef Name="id_con_adr_dom" />
+          </Key>
+          <Property Name="id_con_adr_dom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_ulica" Type="Int32" Nullable="false" />
+          <Property Name="nomer_name_doma" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Ulica" Relationship="Self.FK_Con_Adress_Dom_Ulica" FromRole="Con_Adress_Dom" ToRole="Ulica" />
+          <NavigationProperty Name="Con_adress_Point" Relationship="Self.FK_Con_adress_Point_Con_Adress_Dom" FromRole="Con_Adress_Dom" ToRole="Con_adress_Point" />
+        </EntityType>
+        <EntityType Name="Con_adress_Point">
+          <Key>
+            <PropertyRef Name="id_con_adr_point" />
+          </Key>
+          <Property Name="id_con_adr_point" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_con_adr_dom" Type="Int32" Nullable="false" />
+          <Property Name="con_name_adsr_point" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adress_contragent" Relationship="Self.FK_Adress_contragent_Con_adress_Point" FromRole="Con_adress_Point" ToRole="Adress_contragent" />
+          <NavigationProperty Name="Con_Adress_Dom" Relationship="Self.FK_Con_adress_Point_Con_Adress_Dom" FromRole="Con_adress_Point" ToRole="Con_Adress_Dom" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="id_contact" />
+          </Key>
+          <Property Name="id_contact" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="osn_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dop_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contragenti_contact" Relationship="Self.FK_Contragenti_contact_Contact" FromRole="Contact" ToRole="Contragenti_contact" />
+        </EntityType>
+        <EntityType Name="Contragenti">
+          <Key>
+            <PropertyRef Name="id_contr" />
+          </Key>
+          <Property Name="id_contr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_contr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_adr_contr" Type="Int32" Nullable="false" />
+          <Property Name="id_chet_inbank" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Buchalteryas" Relationship="Self.FK_Buchalterya_Contragenti" FromRole="Contragenti" ToRole="Buchalterya" />
+          <NavigationProperty Name="Chet_inBank" Relationship="Self.FK_Contragenti_Chet_inBank" FromRole="Contragenti" ToRole="Chet_inBank" />
+          <NavigationProperty Name="Contragenti_contact" Relationship="Self.FK_Contragenti_contact_Contragenti" FromRole="Contragenti" ToRole="Contragenti_contact" />
+        </EntityType>
+        <EntityType Name="Contragenti_contact">
+          <Key>
+            <PropertyRef Name="id_contrag" />
+            <PropertyRef Name="id_contact" />
+          </Key>
+          <Property Name="id_contr_cont" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_contrag" Type="Int32" Nullable="false" />
+          <Property Name="id_contact" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Contragenti_contact_Contact" FromRole="Contragenti_contact" ToRole="Contact" />
+          <NavigationProperty Name="Contragenti" Relationship="Self.FK_Contragenti_contact_Contragenti" FromRole="Contragenti_contact" ToRole="Contragenti" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="id_doc" />
+          </Key>
+          <Property Name="id_doc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_tip_doc" Type="Int32" Nullable="false" />
+          <Property Name="name_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_otd" Type="Int32" Nullable="false" />
+          <Property Name="id_vid_doc" Type="Int32" Nullable="false" />
+          <Property Name="id_sotrud_from" Type="Int32" Nullable="false" />
+          <Property Name="id_sotrud_to" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Otdely" Relationship="Self.FK_Documents_Otdely" FromRole="Documents" ToRole="Otdely" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Documents_Sotrudniki" FromRole="Documents" ToRole="Sotrudniki" />
+          <NavigationProperty Name="Sotrudniki1" Relationship="Self.FK_Documents_Sotrudniki1" FromRole="Documents" ToRole="Sotrudniki" />
+          <NavigationProperty Name="Tip_Documenta" Relationship="Self.FK_Documents_Tip_Documenta" FromRole="Documents" ToRole="Tip_Documenta" />
+          <NavigationProperty Name="Dvijenie_Documenta" Relationship="Self.FK_Dvijenie_Documenta_Documents" FromRole="Documents" ToRole="Dvijenie_Documenta" />
+        </EntityType>
+        <EntityType Name="Dolzhnosti">
+          <Key>
+            <PropertyRef Name="id_dolzhn" />
+          </Key>
+          <Property Name="id_dolzhn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_dolzhn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="History_replace_sotr" Relationship="Self.FK_History_replace_sotr_Dolzhnosti2" FromRole="Dolzhnosti" ToRole="History_replace_sotr" />
+          <NavigationProperty Name="History_replace_sotr1" Relationship="Self.FK_History_replace_sotr_Dolzhnosti3" FromRole="Dolzhnosti" ToRole="History_replace_sotr" />
+          <NavigationProperty Name="Sotrudnikis" Relationship="Self.FK_Sotrudniki_Dolzhnosti" FromRole="Dolzhnosti" ToRole="Sotrudniki" />
+        </EntityType>
+        <EntityType Name="Dvijenie_Documenta">
+          <Key>
+            <PropertyRef Name="id_dv_doc" />
+          </Key>
+          <Property Name="id_dv_doc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_doc" Type="Int32" Nullable="false" />
+          <Property Name="data_sob" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_type_dvij" Type="Int32" Nullable="false" />
+          <Property Name="id_contag" Type="Int32" Nullable="false" />
+          <Property Name="id_otd" Type="Int32" Nullable="false" />
+          <Property Name="id_sotr" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="Self.FK_Dvijenie_Documenta_Documents" FromRole="Dvijenie_Documenta" ToRole="Documents" />
+        </EntityType>
+        <EntityType Name="History_replace_sotr">
+          <Key>
+            <PropertyRef Name="id_hrs" />
+          </Key>
+          <Property Name="id_hrs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sotr" Type="Int32" Nullable="false" />
+          <Property Name="from_id_otd" Type="Int32" />
+          <Property Name="to_id_otd" Type="Int32" />
+          <Property Name="date_replace" Type="DateTime" Precision="0" />
+          <Property Name="from_id_dolzh" Type="Int32" />
+          <Property Name="to_id_dolzh" Type="Int32" />
+          <NavigationProperty Name="Dolzhnosti" Relationship="Self.FK_History_replace_sotr_Dolzhnosti2" FromRole="History_replace_sotr" ToRole="Dolzhnosti" />
+          <NavigationProperty Name="Dolzhnosti1" Relationship="Self.FK_History_replace_sotr_Dolzhnosti3" FromRole="History_replace_sotr" ToRole="Dolzhnosti" />
+          <NavigationProperty Name="Otdely" Relationship="Self.FK_History_replace_sotr_Otdely" FromRole="History_replace_sotr" ToRole="Otdely" />
+          <NavigationProperty Name="Otdely1" Relationship="Self.FK_History_replace_sotr_Otdely1" FromRole="History_replace_sotr" ToRole="Otdely" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_History_replace_sotr_Sotrudniki" FromRole="History_replace_sotr" ToRole="Sotrudniki" />
+        </EntityType>
+        <EntityType Name="Mestnost">
+          <Key>
+            <PropertyRef Name="id_mesto" />
+          </Key>
+          <Property Name="id_mesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_region" Type="Int32" />
+          <Property Name="name_mesto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="post_index_mesto" Type="Int32" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_Mestnost_Region" FromRole="Mestnost" ToRole="Region" />
+          <NavigationProperty Name="Ulicas" Relationship="Self.FK_Ylizi_Mestnost" FromRole="Mestnost" ToRole="Ulica" />
+        </EntityType>
+        <EntityType Name="Otdely">
+          <Key>
+            <PropertyRef Name="id_otd" />
+          </Key>
+          <Property Name="id_otd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_otd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_otd_parent" Type="Int32" />
+          <Property Name="date_birth" Type="DateTime" Precision="0" />
+          <Property Name="date_death" Type="DateTime" Precision="0" />
+          <Property Name="id_nach" Type="Int32" />
+          <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_Otdely" FromRole="Otdely" ToRole="Documents" />
+          <NavigationProperty Name="History_replace_sotr" Relationship="Self.FK_History_replace_sotr_Otdely" FromRole="Otdely" ToRole="History_replace_sotr" />
+          <NavigationProperty Name="History_replace_sotr1" Relationship="Self.FK_History_replace_sotr_Otdely1" FromRole="Otdely" ToRole="History_replace_sotr" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Otdely_Sotrudniki" FromRole="Otdely" ToRole="Sotrudniki" />
+          <NavigationProperty Name="Sotrudnikis" Relationship="Self.FK_Sotrudniki_Otdely" FromRole="Otdely" ToRole="Sotrudniki" />
+        </EntityType>
+        <EntityType Name="Prichina">
+          <Key>
+            <PropertyRef Name="id_prich" />
+          </Key>
+          <Property Name="id_prich" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_prich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Arhiv_sotr" Relationship="Self.FK_Arhiv_sotr_Prichina" FromRole="Prichina" ToRole="Arhiv_sotr" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="id_reg" />
+          </Key>
+          <Property Name="id_reg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_stran" Type="Int32" Nullable="false" />
+          <Property Name="name_reg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="post_index_region" Type="Int32" />
+          <NavigationProperty Name="Mestnosts" Relationship="Self.FK_Mestnost_Region" FromRole="Region" ToRole="Mestnost" />
+          <NavigationProperty Name="Strana" Relationship="Self.FK_Region_Strana" FromRole="Region" ToRole="Strana" />
+        </EntityType>
+        <EntityType Name="Sotrudniki">
+          <Key>
+            <PropertyRef Name="id_sotr" />
+          </Key>
+          <Property Name="id_sotr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_sotr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastname_sotr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adress_sotr" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email_sotr" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="phone_sotr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_otd" Type="Int32" Nullable="false" />
+          <Property Name="data_priema" Type="DateTime" Precision="0" />
+          <Property Name="id_dolzhn" Type="Int32" />
+          <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_Sotrudniki" FromRole="Sotrudniki" ToRole="Documents" />
+          <NavigationProperty Name="Documents1" Relationship="Self.FK_Documents_Sotrudniki1" FromRole="Sotrudniki" ToRole="Documents" />
+          <NavigationProperty Name="Dolzhnosti" Relationship="Self.FK_Sotrudniki_Dolzhnosti" FromRole="Sotrudniki" ToRole="Dolzhnosti" />
+          <NavigationProperty Name="History_replace_sotr" Relationship="Self.FK_History_replace_sotr_Sotrudniki" FromRole="Sotrudniki" ToRole="History_replace_sotr" />
+          <NavigationProperty Name="Otdelies" Relationship="Self.FK_Otdely_Sotrudniki" FromRole="Sotrudniki" ToRole="Otdely" />
+          <NavigationProperty Name="Otdely" Relationship="Self.FK_Sotrudniki_Otdely" FromRole="Sotrudniki" ToRole="Otdely" />
+        </EntityType>
+        <EntityType Name="Strana">
+          <Key>
+            <PropertyRef Name="id_strana" />
+          </Key>
+          <Property Name="id_strana" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_stran" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kod_stran" Type="Int32" />
+          <Property Name="post_index_stran" Type="Int32" />
+          <NavigationProperty Name="Bankis" Relationship="Self.FK_Banki_Strana" FromRole="Strana" ToRole="Banki" />
+          <NavigationProperty Name="Regions" Relationship="Self.FK_Region_Strana" FromRole="Strana" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="Tip_Documenta">
+          <Key>
+            <PropertyRef Name="id_tip_doc" />
+          </Key>
+          <Property Name="id_tip_doc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_vid_doc" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Buchalteryas" Relationship="Self.FK_Buchalterya_Tip_Documenta" FromRole="Tip_Documenta" ToRole="Buchalterya" />
+          <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_Tip_Documenta" FromRole="Tip_Documenta" ToRole="Documents" />
+          <NavigationProperty Name="Vid_Documenta" Relationship="Self.FK_Tip_Documenta_Vid_Documenta" FromRole="Tip_Documenta" ToRole="Vid_Documenta" />
+        </EntityType>
+        <EntityType Name="Ulica">
+          <Key>
+            <PropertyRef Name="id_ulica" />
+          </Key>
+          <Property Name="id_ulica" Type="Int32" Nullable="false" />
+          <Property Name="name_ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_mesto" Type="Int32" Nullable="false" />
+          <Property Name="post_index_ulica" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Con_Adress_Dom" Relationship="Self.FK_Con_Adress_Dom_Ulica" FromRole="Ulica" ToRole="Con_Adress_Dom" />
+          <NavigationProperty Name="Mestnost" Relationship="Self.FK_Ylizi_Mestnost" FromRole="Ulica" ToRole="Mestnost" />
+        </EntityType>
+        <EntityType Name="Valyta">
+          <Key>
+            <PropertyRef Name="id_val" />
+          </Key>
+          <Property Name="id_val" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_val" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Buchalteryas" Relationship="Self.FK_Buchalterya_Valyta" FromRole="Valyta" ToRole="Buchalterya" />
+        </EntityType>
+        <EntityType Name="Vid_Documenta">
+          <Key>
+            <PropertyRef Name="id_vid_doc" />
+          </Key>
+          <Property Name="id_vid_doc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_vid_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tip_podrazd" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tip_Documenta" Relationship="Self.FK_Tip_Documenta_Vid_Documenta" FromRole="Vid_Documenta" ToRole="Tip_Documenta" />
+        </EntityType>
+        <Association Name="FK_Adress_contragent_Con_adress_Point">
+          <End Role="Con_adress_Point" Type="Self.Con_adress_Point" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Adress_contragent" Type="Self.Adress_contragent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Con_adress_Point">
+              <PropertyRef Name="id_con_adr_point" />
+            </Principal>
+            <Dependent Role="Adress_contragent">
+              <PropertyRef Name="id_conec_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arhiv_sotr_Prichina">
+          <End Role="Prichina" Type="Self.Prichina" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Arhiv_sotr" Type="Self.Arhiv_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prichina">
+              <PropertyRef Name="id_prich" />
+            </Principal>
+            <Dependent Role="Arhiv_sotr">
+              <PropertyRef Name="id_prichin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Banki_Strana">
+          <End Role="Strana" Type="Self.Strana" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Banki" Type="Self.Banki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strana">
+              <PropertyRef Name="id_strana" />
+            </Principal>
+            <Dependent Role="Banki">
+              <PropertyRef Name="id_strana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Buchalterya_Contragenti">
+          <End Role="Contragenti" Type="Self.Contragenti" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buchalterya" Type="Self.Buchalterya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contragenti">
+              <PropertyRef Name="id_contr" />
+            </Principal>
+            <Dependent Role="Buchalterya">
+              <PropertyRef Name="id_contragent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Buchalterya_Tip_Documenta">
+          <End Role="Tip_Documenta" Type="Self.Tip_Documenta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buchalterya" Type="Self.Buchalterya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Documenta">
+              <PropertyRef Name="id_tip_doc" />
+            </Principal>
+            <Dependent Role="Buchalterya">
+              <PropertyRef Name="id_tip_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Buchalterya_Valyta">
+          <End Role="Valyta" Type="Self.Valyta" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buchalterya" Type="Self.Buchalterya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Valyta">
+              <PropertyRef Name="id_val" />
+            </Principal>
+            <Dependent Role="Buchalterya">
+              <PropertyRef Name="id_valyti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contragenti_Chet_inBank">
+          <End Role="Chet_inBank" Type="Self.Chet_inBank" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contragenti" Type="Self.Contragenti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chet_inBank">
+              <PropertyRef Name="id_chet_inbak" />
+            </Principal>
+            <Dependent Role="Contragenti">
+              <PropertyRef Name="id_chet_inbank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Con_Adress_Dom_Ulica">
+          <End Role="Ulica" Type="Self.Ulica" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Con_Adress_Dom" Type="Self.Con_Adress_Dom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ulica">
+              <PropertyRef Name="id_ulica" />
+            </Principal>
+            <Dependent Role="Con_Adress_Dom">
+              <PropertyRef Name="id_ulica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Con_adress_Point_Con_Adress_Dom">
+          <End Role="Con_Adress_Dom" Type="Self.Con_Adress_Dom" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Con_adress_Point" Type="Self.Con_adress_Point" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Con_Adress_Dom">
+              <PropertyRef Name="id_con_adr_dom" />
+            </Principal>
+            <Dependent Role="Con_adress_Point">
+              <PropertyRef Name="id_con_adr_dom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contragenti_contact_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contragenti_contact" Type="Self.Contragenti_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="id_contact" />
+            </Principal>
+            <Dependent Role="Contragenti_contact">
+              <PropertyRef Name="id_contact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contragenti_contact_Contragenti">
+          <End Role="Contragenti" Type="Self.Contragenti" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contragenti_contact" Type="Self.Contragenti_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contragenti">
+              <PropertyRef Name="id_contr" />
+            </Principal>
+            <Dependent Role="Contragenti_contact">
+              <PropertyRef Name="id_contrag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_Otdely">
+          <End Role="Otdely" Type="Self.Otdely" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdely">
+              <PropertyRef Name="id_otd" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="id_otd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="id_sotr" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="id_sotrud_from" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_Sotrudniki1">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="id_sotr" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="id_sotrud_to" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_Tip_Documenta">
+          <End Role="Tip_Documenta" Type="Self.Tip_Documenta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Documenta">
+              <PropertyRef Name="id_tip_doc" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="id_tip_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dvijenie_Documenta_Documents">
+          <End Role="Documents" Type="Self.Document" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dvijenie_Documenta" Type="Self.Dvijenie_Documenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="id_doc" />
+            </Principal>
+            <Dependent Role="Dvijenie_Documenta">
+              <PropertyRef Name="id_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_replace_sotr_Dolzhnosti2">
+          <End Role="Dolzhnosti" Type="Self.Dolzhnosti" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="History_replace_sotr" Type="Self.History_replace_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolzhnosti">
+              <PropertyRef Name="id_dolzhn" />
+            </Principal>
+            <Dependent Role="History_replace_sotr">
+              <PropertyRef Name="from_id_dolzh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_replace_sotr_Dolzhnosti3">
+          <End Role="Dolzhnosti" Type="Self.Dolzhnosti" Multiplicity="0..1" />
+          <End Role="History_replace_sotr" Type="Self.History_replace_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolzhnosti">
+              <PropertyRef Name="id_dolzhn" />
+            </Principal>
+            <Dependent Role="History_replace_sotr">
+              <PropertyRef Name="to_id_dolzh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Dolzhnosti">
+          <End Role="Dolzhnosti" Type="Self.Dolzhnosti" Multiplicity="0..1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolzhnosti">
+              <PropertyRef Name="id_dolzhn" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="id_dolzhn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_replace_sotr_Otdely">
+          <End Role="Otdely" Type="Self.Otdely" Multiplicity="0..1" />
+          <End Role="History_replace_sotr" Type="Self.History_replace_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdely">
+              <PropertyRef Name="id_otd" />
+            </Principal>
+            <Dependent Role="History_replace_sotr">
+              <PropertyRef Name="from_id_otd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_replace_sotr_Otdely1">
+          <End Role="Otdely" Type="Self.Otdely" Multiplicity="0..1" />
+          <End Role="History_replace_sotr" Type="Self.History_replace_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdely">
+              <PropertyRef Name="id_otd" />
+            </Principal>
+            <Dependent Role="History_replace_sotr">
+              <PropertyRef Name="to_id_otd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_replace_sotr_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="History_replace_sotr" Type="Self.History_replace_sotr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="id_sotr" />
+            </Principal>
+            <Dependent Role="History_replace_sotr">
+              <PropertyRef Name="id_sotr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mestnost_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Mestnost" Type="Self.Mestnost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="id_reg" />
+            </Principal>
+            <Dependent Role="Mestnost">
+              <PropertyRef Name="id_region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ylizi_Mestnost">
+          <End Role="Mestnost" Type="Self.Mestnost" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ulica" Type="Self.Ulica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mestnost">
+              <PropertyRef Name="id_mesto" />
+            </Principal>
+            <Dependent Role="Ulica">
+              <PropertyRef Name="id_mesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Otdely_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Otdely" Type="Self.Otdely" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="id_sotr" />
+            </Principal>
+            <Dependent Role="Otdely">
+              <PropertyRef Name="id_nach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Otdely">
+          <End Role="Otdely" Type="Self.Otdely" Multiplicity="1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdely">
+              <PropertyRef Name="id_otd" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="id_otd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Region_Strana">
+          <End Role="Strana" Type="Self.Strana" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Region" Type="Self.Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strana">
+              <PropertyRef Name="id_strana" />
+            </Principal>
+            <Dependent Role="Region">
+              <PropertyRef Name="id_stran" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tip_Documenta_Vid_Documenta">
+          <End Role="Vid_Documenta" Type="Self.Vid_Documenta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tip_Documenta" Type="Self.Tip_Documenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vid_Documenta">
+              <PropertyRef Name="id_vid_doc" />
+            </Principal>
+            <Dependent Role="Tip_Documenta">
+              <PropertyRef Name="id_vid_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OooPs14_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adress_contragent" EntityType="Self.Adress_contragent" />
+          <EntitySet Name="Arhiv_sotr" EntityType="Self.Arhiv_sotr" />
+          <EntitySet Name="Bankis" EntityType="Self.Banki" />
+          <EntitySet Name="Buchalteryas" EntityType="Self.Buchalterya" />
+          <EntitySet Name="Chet_inBank" EntityType="Self.Chet_inBank" />
+          <EntitySet Name="Con_Adress_Dom" EntityType="Self.Con_Adress_Dom" />
+          <EntitySet Name="Con_adress_Point" EntityType="Self.Con_adress_Point" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Contragentis" EntityType="Self.Contragenti" />
+          <EntitySet Name="Contragenti_contact" EntityType="Self.Contragenti_contact" />
+          <EntitySet Name="Documents" EntityType="Self.Document" />
+          <EntitySet Name="Dolzhnostis" EntityType="Self.Dolzhnosti" />
+          <EntitySet Name="Dvijenie_Documenta" EntityType="Self.Dvijenie_Documenta" />
+          <EntitySet Name="History_replace_sotr" EntityType="Self.History_replace_sotr" />
+          <EntitySet Name="Mestnosts" EntityType="Self.Mestnost" />
+          <EntitySet Name="Otdelies" EntityType="Self.Otdely" />
+          <EntitySet Name="Prichinas" EntityType="Self.Prichina" />
+          <EntitySet Name="Regions" EntityType="Self.Region" />
+          <EntitySet Name="Sotrudnikis" EntityType="Self.Sotrudniki" />
+          <EntitySet Name="Stranas" EntityType="Self.Strana" />
+          <EntitySet Name="Tip_Documenta" EntityType="Self.Tip_Documenta" />
+          <EntitySet Name="Ulicas" EntityType="Self.Ulica" />
+          <EntitySet Name="Valytas" EntityType="Self.Valyta" />
+          <EntitySet Name="Vid_Documenta" EntityType="Self.Vid_Documenta" />
+          <AssociationSet Name="FK_Adress_contragent_Con_adress_Point" Association="Self.FK_Adress_contragent_Con_adress_Point">
+            <End Role="Con_adress_Point" EntitySet="Con_adress_Point" />
+            <End Role="Adress_contragent" EntitySet="Adress_contragent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arhiv_sotr_Prichina" Association="Self.FK_Arhiv_sotr_Prichina">
+            <End Role="Prichina" EntitySet="Prichinas" />
+            <End Role="Arhiv_sotr" EntitySet="Arhiv_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Banki_Strana" Association="Self.FK_Banki_Strana">
+            <End Role="Strana" EntitySet="Stranas" />
+            <End Role="Banki" EntitySet="Bankis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Buchalterya_Contragenti" Association="Self.FK_Buchalterya_Contragenti">
+            <End Role="Contragenti" EntitySet="Contragentis" />
+            <End Role="Buchalterya" EntitySet="Buchalteryas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Buchalterya_Tip_Documenta" Association="Self.FK_Buchalterya_Tip_Documenta">
+            <End Role="Tip_Documenta" EntitySet="Tip_Documenta" />
+            <End Role="Buchalterya" EntitySet="Buchalteryas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Buchalterya_Valyta" Association="Self.FK_Buchalterya_Valyta">
+            <End Role="Valyta" EntitySet="Valytas" />
+            <End Role="Buchalterya" EntitySet="Buchalteryas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contragenti_Chet_inBank" Association="Self.FK_Contragenti_Chet_inBank">
+            <End Role="Chet_inBank" EntitySet="Chet_inBank" />
+            <End Role="Contragenti" EntitySet="Contragentis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Con_Adress_Dom_Ulica" Association="Self.FK_Con_Adress_Dom_Ulica">
+            <End Role="Ulica" EntitySet="Ulicas" />
+            <End Role="Con_Adress_Dom" EntitySet="Con_Adress_Dom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Con_adress_Point_Con_Adress_Dom" Association="Self.FK_Con_adress_Point_Con_Adress_Dom">
+            <End Role="Con_Adress_Dom" EntitySet="Con_Adress_Dom" />
+            <End Role="Con_adress_Point" EntitySet="Con_adress_Point" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contragenti_contact_Contact" Association="Self.FK_Contragenti_contact_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Contragenti_contact" EntitySet="Contragenti_contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contragenti_contact_Contragenti" Association="Self.FK_Contragenti_contact_Contragenti">
+            <End Role="Contragenti" EntitySet="Contragentis" />
+            <End Role="Contragenti_contact" EntitySet="Contragenti_contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_Otdely" Association="Self.FK_Documents_Otdely">
+            <End Role="Otdely" EntitySet="Otdelies" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_Sotrudniki" Association="Self.FK_Documents_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_Sotrudniki1" Association="Self.FK_Documents_Sotrudniki1">
+            <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_Tip_Documenta" Association="Self.FK_Documents_Tip_Documenta">
+            <End Role="Tip_Documenta" EntitySet="Tip_Documenta" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dvijenie_Documenta_Documents" Association="Self.FK_Dvijenie_Documenta_Documents">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Dvijenie_Documenta" EntitySet="Dvijenie_Documenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_replace_sotr_Dolzhnosti2" Association="Self.FK_History_replace_sotr_Dolzhnosti2">
+            <End Role="Dolzhnosti" EntitySet="Dolzhnostis" />
+            <End Role="History_replace_sotr" EntitySet="History_replace_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_replace_sotr_Dolzhnosti3" Association="Self.FK_History_replace_sotr_Dolzhnosti3">
+            <End Role="Dolzhnosti" EntitySet="Dolzhnostis" />
+            <End Role="History_replace_sotr" EntitySet="History_replace_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Dolzhnosti" Association="Self.FK_Sotrudniki_Dolzhnosti">
+            <End Role="Dolzhnosti" EntitySet="Dolzhnostis" />
+            <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_replace_sotr_Otdely" Association="Self.FK_History_replace_sotr_Otdely">
+            <End Role="Otdely" EntitySet="Otdelies" />
+            <End Role="History_replace_sotr" EntitySet="History_replace_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_replace_sotr_Otdely1" Association="Self.FK_History_replace_sotr_Otdely1">
+            <End Role="Otdely" EntitySet="Otdelies" />
+            <End Role="History_replace_sotr" EntitySet="History_replace_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_replace_sotr_Sotrudniki" Association="Self.FK_History_replace_sotr_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+            <End Role="History_replace_sotr" EntitySet="History_replace_sotr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mestnost_Region" Association="Self.FK_Mestnost_Region">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="Mestnost" EntitySet="Mestnosts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ylizi_Mestnost" Association="Self.FK_Ylizi_Mestnost">
+            <End Role="Mestnost" EntitySet="Mestnosts" />
+            <End Role="Ulica" EntitySet="Ulicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Otdely_Sotrudniki" Association="Self.FK_Otdely_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+            <End Role="Otdely" EntitySet="Otdelies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Otdely" Association="Self.FK_Sotrudniki_Otdely">
+            <End Role="Otdely" EntitySet="Otdelies" />
+            <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Region_Strana" Association="Self.FK_Region_Strana">
+            <End Role="Strana" EntitySet="Stranas" />
+            <End Role="Region" EntitySet="Regions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tip_Documenta_Vid_Documenta" Association="Self.FK_Tip_Documenta_Vid_Documenta">
+            <End Role="Vid_Documenta" EntitySet="Vid_Documenta" />
+            <End Role="Tip_Documenta" EntitySet="Tip_Documenta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OooPs14_dbModelStoreContainer" CdmEntityContainer="OooPs14_dbEntities">
+          <EntitySetMapping Name="Adress_contragent">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Adress_contragent">
+              <MappingFragment StoreEntitySet="Adress_contragent">
+                <ScalarProperty Name="id_adr_contr" ColumnName="id_adr_contr" />
+                <ScalarProperty Name="id_contragent" ColumnName="id_contragent" />
+                <ScalarProperty Name="id_conec_adress" ColumnName="id_conec_adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Arhiv_sotr">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Arhiv_sotr">
+              <MappingFragment StoreEntitySet="Arhiv_sotr">
+                <ScalarProperty Name="id_arh" ColumnName="id_arh" />
+                <ScalarProperty Name="id_sotr" ColumnName="id_sotr" />
+                <ScalarProperty Name="data_uvolneniya" ColumnName="data_uvolneniya" />
+                <ScalarProperty Name="name_sotr" ColumnName="name_sotr" />
+                <ScalarProperty Name="lastname_sotr" ColumnName="lastname_sotr" />
+                <ScalarProperty Name="adress_sotr" ColumnName="adress_sotr" />
+                <ScalarProperty Name="email_sotr" ColumnName="email_sotr" />
+                <ScalarProperty Name="phone_sotr" ColumnName="phone_sotr" />
+                <ScalarProperty Name="id_otd" ColumnName="id_otd" />
+                <ScalarProperty Name="data_priema" ColumnName="data_priema" />
+                <ScalarProperty Name="id_dolzhn" ColumnName="id_dolzhn" />
+                <ScalarProperty Name="id_prichin" ColumnName="id_prichin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bankis">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Banki">
+              <MappingFragment StoreEntitySet="Banki">
+                <ScalarProperty Name="id_bank" ColumnName="id_bank" />
+                <ScalarProperty Name="name_banka" ColumnName="name_banka" />
+                <ScalarProperty Name="id_strana" ColumnName="id_strana" />
+                <ScalarProperty Name="kod_banka" ColumnName="kod_banka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buchalteryas">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Buchalterya">
+              <MappingFragment StoreEntitySet="Buchalterya">
+                <ScalarProperty Name="id_buh" ColumnName="id_buh" />
+                <ScalarProperty Name="summa" ColumnName="summa" />
+                <ScalarProperty Name="id_valyti" ColumnName="id_valyti" />
+                <ScalarProperty Name="id_contragent" ColumnName="id_contragent" />
+                <ScalarProperty Name="prih_rash" ColumnName="prih_rash" />
+                <ScalarProperty Name="id_tip_doc" ColumnName="id_tip_doc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chet_inBank">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Chet_inBank">
+              <MappingFragment StoreEntitySet="Chet_inBank">
+                <ScalarProperty Name="id_chet_inbak" ColumnName="id_chet_inbak" />
+                <ScalarProperty Name="nomer_cheta" ColumnName="nomer_cheta" />
+                <ScalarProperty Name="id_bank" ColumnName="id_bank" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Con_Adress_Dom">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Con_Adress_Dom">
+              <MappingFragment StoreEntitySet="Con_Adress_Dom">
+                <ScalarProperty Name="id_con_adr_dom" ColumnName="id_con_adr_dom" />
+                <ScalarProperty Name="id_ulica" ColumnName="id_ulica" />
+                <ScalarProperty Name="nomer_name_doma" ColumnName="nomer_name_doma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Con_adress_Point">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Con_adress_Point">
+              <MappingFragment StoreEntitySet="Con_adress_Point">
+                <ScalarProperty Name="id_con_adr_point" ColumnName="id_con_adr_point" />
+                <ScalarProperty Name="id_con_adr_dom" ColumnName="id_con_adr_dom" />
+                <ScalarProperty Name="con_name_adsr_point" ColumnName="con_name_adsr_point" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="id_contact" ColumnName="id_contact" />
+                <ScalarProperty Name="osn_phone" ColumnName="osn_phone" />
+                <ScalarProperty Name="dop_phone" ColumnName="dop_phone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contragentis">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Contragenti">
+              <MappingFragment StoreEntitySet="Contragenti">
+                <ScalarProperty Name="id_contr" ColumnName="id_contr" />
+                <ScalarProperty Name="name_contr" ColumnName="name_contr" />
+                <ScalarProperty Name="id_adr_contr" ColumnName="id_adr_contr" />
+                <ScalarProperty Name="id_chet_inbank" ColumnName="id_chet_inbank" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contragenti_contact">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Contragenti_contact">
+              <MappingFragment StoreEntitySet="Contragenti_contact">
+                <ScalarProperty Name="id_contr_cont" ColumnName="id_contr_cont" />
+                <ScalarProperty Name="id_contrag" ColumnName="id_contrag" />
+                <ScalarProperty Name="id_contact" ColumnName="id_contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Document">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="id_doc" ColumnName="id_doc" />
+                <ScalarProperty Name="id_tip_doc" ColumnName="id_tip_doc" />
+                <ScalarProperty Name="name_doc" ColumnName="name_doc" />
+                <ScalarProperty Name="id_otd" ColumnName="id_otd" />
+                <ScalarProperty Name="id_vid_doc" ColumnName="id_vid_doc" />
+                <ScalarProperty Name="id_sotrud_from" ColumnName="id_sotrud_from" />
+                <ScalarProperty Name="id_sotrud_to" ColumnName="id_sotrud_to" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dolzhnostis">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Dolzhnosti">
+              <MappingFragment StoreEntitySet="Dolzhnosti">
+                <ScalarProperty Name="id_dolzhn" ColumnName="id_dolzhn" />
+                <ScalarProperty Name="name_dolzhn" ColumnName="name_dolzhn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dvijenie_Documenta">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Dvijenie_Documenta">
+              <MappingFragment StoreEntitySet="Dvijenie_Documenta">
+                <ScalarProperty Name="id_dv_doc" ColumnName="id_dv_doc" />
+                <ScalarProperty Name="id_doc" ColumnName="id_doc" />
+                <ScalarProperty Name="data_sob" ColumnName="data_sob" />
+                <ScalarProperty Name="id_type_dvij" ColumnName="id_type_dvij" />
+                <ScalarProperty Name="id_contag" ColumnName="id_contag" />
+                <ScalarProperty Name="id_otd" ColumnName="id_otd" />
+                <ScalarProperty Name="id_sotr" ColumnName="id_sotr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History_replace_sotr">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.History_replace_sotr">
+              <MappingFragment StoreEntitySet="History_replace_sotr">
+                <ScalarProperty Name="id_hrs" ColumnName="id_hrs" />
+                <ScalarProperty Name="id_sotr" ColumnName="id_sotr" />
+                <ScalarProperty Name="from_id_otd" ColumnName="from_id_otd" />
+                <ScalarProperty Name="to_id_otd" ColumnName="to_id_otd" />
+                <ScalarProperty Name="date_replace" ColumnName="date_replace" />
+                <ScalarProperty Name="from_id_dolzh" ColumnName="from_id_dolzh" />
+                <ScalarProperty Name="to_id_dolzh" ColumnName="to_id_dolzh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mestnosts">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Mestnost">
+              <MappingFragment StoreEntitySet="Mestnost">
+                <ScalarProperty Name="id_mesto" ColumnName="id_mesto" />
+                <ScalarProperty Name="id_region" ColumnName="id_region" />
+                <ScalarProperty Name="name_mesto" ColumnName="name_mesto" />
+                <ScalarProperty Name="post_index_mesto" ColumnName="post_index_mesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Otdelies">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Otdely">
+              <MappingFragment StoreEntitySet="Otdely">
+                <ScalarProperty Name="id_otd" ColumnName="id_otd" />
+                <ScalarProperty Name="name_otd" ColumnName="name_otd" />
+                <ScalarProperty Name="id_otd_parent" ColumnName="id_otd_parent" />
+                <ScalarProperty Name="date_birth" ColumnName="date_birth" />
+                <ScalarProperty Name="date_death" ColumnName="date_death" />
+                <ScalarProperty Name="id_nach" ColumnName="id_nach" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prichinas">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Prichina">
+              <MappingFragment StoreEntitySet="Prichina">
+                <ScalarProperty Name="id_prich" ColumnName="id_prich" />
+                <ScalarProperty Name="name_prich" ColumnName="name_prich" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="id_reg" ColumnName="id_reg" />
+                <ScalarProperty Name="id_stran" ColumnName="id_stran" />
+                <ScalarProperty Name="name_reg" ColumnName="name_reg" />
+                <ScalarProperty Name="post_index_region" ColumnName="post_index_region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrudnikis">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Sotrudniki">
+              <MappingFragment StoreEntitySet="Sotrudniki">
+                <ScalarProperty Name="id_sotr" ColumnName="id_sotr" />
+                <ScalarProperty Name="name_sotr" ColumnName="name_sotr" />
+                <ScalarProperty Name="lastname_sotr" ColumnName="lastname_sotr" />
+                <ScalarProperty Name="adress_sotr" ColumnName="adress_sotr" />
+                <ScalarProperty Name="email_sotr" ColumnName="email_sotr" />
+                <ScalarProperty Name="phone_sotr" ColumnName="phone_sotr" />
+                <ScalarProperty Name="id_otd" ColumnName="id_otd" />
+                <ScalarProperty Name="data_priema" ColumnName="data_priema" />
+                <ScalarProperty Name="id_dolzhn" ColumnName="id_dolzhn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stranas">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Strana">
+              <MappingFragment StoreEntitySet="Strana">
+                <ScalarProperty Name="id_strana" ColumnName="id_strana" />
+                <ScalarProperty Name="name_stran" ColumnName="name_stran" />
+                <ScalarProperty Name="kod_stran" ColumnName="kod_stran" />
+                <ScalarProperty Name="post_index_stran" ColumnName="post_index_stran" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip_Documenta">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Tip_Documenta">
+              <MappingFragment StoreEntitySet="Tip_Documenta">
+                <ScalarProperty Name="id_tip_doc" ColumnName="id_tip_doc" />
+                <ScalarProperty Name="name_doc" ColumnName="name_doc" />
+                <ScalarProperty Name="id_vid_doc" ColumnName="id_vid_doc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ulicas">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Ulica">
+              <MappingFragment StoreEntitySet="Ulica">
+                <ScalarProperty Name="id_ulica" ColumnName="id_ulica" />
+                <ScalarProperty Name="name_ulica" ColumnName="name_ulica" />
+                <ScalarProperty Name="id_mesto" ColumnName="id_mesto" />
+                <ScalarProperty Name="post_index_ulica" ColumnName="post_index_ulica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Valytas">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Valyta">
+              <MappingFragment StoreEntitySet="Valyta">
+                <ScalarProperty Name="id_val" ColumnName="id_val" />
+                <ScalarProperty Name="name_val" ColumnName="name_val" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vid_Documenta">
+            <EntityTypeMapping TypeName="OooPs14_dbModel.Vid_Documenta">
+              <MappingFragment StoreEntitySet="Vid_Documenta">
+                <ScalarProperty Name="id_vid_doc" ColumnName="id_vid_doc" />
+                <ScalarProperty Name="name_vid_doc" ColumnName="name_vid_doc" />
+                <ScalarProperty Name="tip_podrazd" ColumnName="tip_podrazd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
